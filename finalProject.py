@@ -246,8 +246,8 @@ def plot_knn_decision_boundary(X, y,k):
     plt.contourf(xx, yy, Z, alpha=0.3, cmap='coolwarm')
 
     scatter = plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c=y, edgecolor='k', cmap='coolwarm', s=100)
-    plt.xlabel('Texture')
     plt.ylabel('Concave Points')
+    plt.xlabel('Fractal Dimension')
     plt.title(f'KNN Decision Boundary (k={k})')
     plt.legend(handles=scatter.legend_elements()[0], labels=['Benign', 'Malignant'])
     plt.savefig("knn.png")
@@ -259,7 +259,7 @@ def main():
     df = clean_data(df)
     correlation_matrix = df.corr()
     print(correlation_matrix)
-    plot_regression_line(df, "texture", "fractal_dimension")
+    plot_regression_line(df, "concave_points", "fractal_dimension")
     label_map = {"M": 1, "B": 0}
     df['label'] = df['Diagnosis'].map(label_map)
 
