@@ -344,6 +344,26 @@ def plot_knn_decision_boundary(X, y,k):
     plt.show()
     
 def main():
+    """
+    Description: reads the dataset using `read_data()`, cleans the dataset using `clean_data()`,
+        computes and prints the correlation matrix of the cleaned dataset, plots a regression line
+         for the specified features using `plot_regression_line()`, encodes the target variable (Diagnosis)
+        into numeric labels, plots the tuning curve for K in K-Nearest Neighbors (KNN) classification using
+         `plot_k_tune()`., scales the selected features using `scale_data()`, performs Principal Component Analysis
+         (PCA) on the scaled data and prints the explained variance ratio, adds PCA components to the original
+         dataframe using `add_pca_columns()`, plots a scatter plot of the PCA components with labels using
+         `plot_pca_scatter()`, applies the `lower_d()` function to the dataset and then performs support vector
+         classification using `supvec()`, splits the dataset into training and testing sets, applies KNN with the best
+         K (3), and evaluates the accuracy, evaluates and prints the KNN predictions and accuracy, plots the KNN decision
+         boundary using `plot_knn_decision_boundary()`
+
+    Notes:
+        - This function assumes that `read_data()`, `clean_data()`, `scale_data()`, `perform_pca()`, 
+          `add_pca_columns()`, `plot_pca_scatter()`, `lower_d()`, `supvec()`, `train_test_split()`, 
+          `K_NN()`, `evaluate_predictions()`, and `plot_knn_decision_boundary()` are defined elsewhere in the code.
+        - It is assumed that the dataset contains columns for "concave_points", "fractal_dimension", and "Diagnosis".
+        - The function prints intermediate outputs like correlation matrix, explained variance ratio, and accuracy.
+    """
     df = read_data()
     df = clean_data(df)
     correlation_matrix = df.corr()
