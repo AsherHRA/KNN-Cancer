@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import statsmodels.api as sm
+from scipy.stats import pearsonr
 from sklearn import svm
 from sklearn.preprocessing import StandardScaler
 import seaborn as sns
@@ -83,6 +83,12 @@ def plot_regression_line(df, x_feature, y_feature):
     model.fit(X, y)
     y_pred = model.predict(X)
     plt.plot(df[x_feature], y_pred, color='red', linewidth=2, label=f'y = {model.coef_[0]:.2f}x + {model.intercept_:.2f}')
+    r_value, _ = pearsonr(df[x_feature], df[y_feature])
+    plt.annotate(f"r = {r_value:.2f}", 
+                 xy=(0.05, 0.95), 
+                 xycoords='axes fraction', 
+                 fontsize=12, 
+                 bbox=dict(boxstyle="round", fc="w", ec="0.5", alpha=0.9))
     plt.legend()
     plt.title(f"Regression Line: {x_feature} vs {y_feature}")
     plt.xlabel(x_feature)
